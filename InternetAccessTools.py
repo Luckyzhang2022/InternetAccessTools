@@ -72,7 +72,8 @@ class UpdateChecker(QThread):
             release_api = f"https://api.github.com/repos/{GITHUB_REPO}/releases/latest"
             resp = requests.get(release_api, timeout=10)
             if resp.status_code != 200:
-                self.error_occurred.emit("无法连接 GitHub 获取版本信息")
+                # self.error_occurred.emit("无法连接 GitHub 获取版本信息")  # 屏蔽弹窗提示
+                print('无法连接 GitHub 获取版本信息')
                 return
 
             data = resp.json()
